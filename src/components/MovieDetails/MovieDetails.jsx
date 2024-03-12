@@ -7,10 +7,12 @@ import { useState } from "react"
 import { useEffect } from 'react'
 
 
-export const MovieDetails = ({movieId, onClick})=>{
+export const MovieDetails = ({onClick})=>{
 	const [isLoading, setIsLoading] = useState(true)
 	const [overview, setOverview] = useState(null)
 	const [recommendation, setRecommandation] = useState([])
+
+	const {id} = useParams()
 
 	
 	useEffect( ()=>{
@@ -40,9 +42,9 @@ export const MovieDetails = ({movieId, onClick})=>{
 
 		_movie()
 		_recommendation()
-	}, [])
+	}, [id])
 
-	const {id} = useParams()
+	
 	if(!id){
 		return <p>Film introuvable</p>
 	}
